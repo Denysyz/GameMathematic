@@ -11,7 +11,7 @@ public class Logic {
     double b1 = Math.random() * 8 + 5;
     int a = (int) a1;
     int b = (int) b1;
-    Face f = new Face();
+
 
 
 }
