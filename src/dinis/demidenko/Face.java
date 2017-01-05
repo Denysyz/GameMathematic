@@ -1,8 +1,12 @@
 package dinis.demidenko;
+import javafx.scene.layout.Border;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
+import static java.awt.Transparency.OPAQUE;
 
 public class Face {
     int znak = 1;
@@ -13,6 +17,8 @@ public class Face {
     int a = (int) a1;
     int b = (int) b1;
     Logic logicObj = new Logic();
+    JPanel pane = new JPanel();
+    JPanel pane2 = new JPanel();
     JFrame frame = new JFrame("Game");
     JFrame frameDia = new JFrame("Вибір дії");
     JLabel priklad = new JLabel(a + " + " + b + " = ");
@@ -40,31 +46,63 @@ public class Face {
     JButton butNine = new JButton("9");
     JButton butNull = new JButton("0");
     JButton butResult = new JButton("Перевірка");
+    JButton butDelete = new JButton("<");
     void face(){
         frame.setSize(500, 600);
         frame.setLayout(null);
+        pane.setLayout(null);
+        pane.setBackground(new Color(30, 36, 49));
+        frame.setContentPane(pane);
+
+        pane2.setLayout(null);
+        pane2.setBackground(new Color(30, 36, 49));
         frameDia.setSize(300, 500);
+        frameDia.setContentPane(pane2);
         frameDia.setLayout(null);
+
+        butDelete.setBounds(370, 180, 100, 50 );
+        butDelete.setFont(new Font("�������", Font.PLAIN, 30));
+        butDelete.setBackground(new Color(62, 62, 62));
+        butDelete.setForeground(new Color(196, 196, 198));
+        frame.add(butDelete);
+
         butDiaPlus.setBounds(30, 30, 210, 50);
         butDiaPlus.setFont(new Font("�������", Font.PLAIN, 30));
+        butDiaPlus.setBackground(new Color(62, 62, 62));
+        butDiaPlus.setForeground(new Color(196, 196, 198));
         frameDia.add(butDiaPlus);
+
         butDiaMnog.setBounds(30, 90, 210, 50);
         butDiaMnog.setFont(new Font("�������", Font.PLAIN, 30));
+        butDiaMnog.setBackground(new Color(62, 62, 62));
+        butDiaMnog.setForeground(new Color(196, 196, 198));
         frameDia.add(butDiaMnog);
+
         butDiaMinus.setBounds(30, 150, 210, 50);
         butDiaMinus.setFont(new Font("�������", Font.PLAIN, 30));
+        butDiaMinus.setBackground(new Color(62, 62, 62));
+        butDiaMinus.setForeground(new Color(196, 196, 198));
         frameDia.add(butDiaMinus);
+
         butDiaDiv.setBounds(30, 210, 210, 50);
         butDiaDiv.setFont(new Font("�������", Font.PLAIN, 30));
+        butDiaDiv.setBackground(new Color(62, 62, 62));
+        butDiaDiv.setForeground(new Color(196, 196, 198));
         frameDia.add(butDiaDiv);
+
         butDia.setBounds(255, 490, 210, 50);
         butDia.setFont(new Font("�������", Font.PLAIN, 30));
+        butDia.setBackground(new Color(62, 62, 62));
+        butDia.setForeground(new Color(196, 196, 198));
         frame.add(butDia);
+
         priklad.setBounds(50, 50, 400, 110);
         priklad.setFont(new Font("�������", Font.PLAIN, 60));
+        priklad.setForeground(new Color(196, 196, 198));
         frame.add(priklad);
         status.setBounds(100, 10, 400, 80);
         status.setFont(new Font("�������", Font.PLAIN, 40));
+        status.setForeground(new Color(196, 196, 198));
         frame.add(status);
 
         if ( logicObj.a > 9 | logicObj.b > 9){
@@ -80,18 +118,20 @@ public class Face {
         rangeOne.setBounds(325, 20, 20, 20);;
         rangeOne.setFont(new Font("�������", Font.PLAIN, 16));
         rangeOne.setBackground(new Color(220, 220, 220));
+        rangeOne.setForeground(new Color(196, 196, 198));
         frame.add(rangeOne);
         rangeTwo.setBounds(400, 20, 20, 20);;
         rangeTwo.setFont(new Font("�������", Font.PLAIN, 16));
         rangeTwo.setBackground(new Color(220, 220, 220));
+        rangeTwo.setForeground(new Color(196, 196, 198));
         frame.add(rangeTwo);
         butDiaPlus.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 znak = 1;
                 a1 = Math.random() * (rangeEnd - rangeFirst) + rangeFirst;
                 b1 = Math.random() * (rangeEnd - rangeFirst) + rangeFirst;
-                a = (int)a1;
-                b = (int)b1;
+                a = (int) a1;
+                b = (int) b1;
                 priklad.setText(a + " + " + b + " = ");
                 frameDia.setVisible(false);
                 frameDia.setVisible(false);
@@ -144,13 +184,25 @@ public class Face {
             }
         });
         butROneMinus.setBounds(310, 0, 50, 20);
+        butROneMinus.setBackground(new Color(62, 62, 62));
+        butROneMinus.setForeground(new Color(196, 196, 198));
         frame.add(butROneMinus);
+
         butROnePlus.setBounds(310, 40, 50, 20);
+        butROnePlus.setBackground(new Color(62, 62, 62));
+        butROnePlus.setForeground(new Color(196, 196, 198));
         frame.add(butROnePlus);
+
         butRTwoMinus.setBounds(385, 0, 50, 20);
+        butRTwoMinus.setBackground(new Color(62, 62, 62));
+        butRTwoMinus.setForeground(new Color(196, 196, 198));
         frame.add(butRTwoMinus);
+
         butRTwoPlus.setBounds(385, 40, 50, 20);
+        butRTwoPlus.setBackground(new Color(62, 62, 62));
+        butRTwoPlus.setForeground(new Color(196, 196, 198));
         frame.add(butRTwoPlus);
+
         createBut(butOne, 40, 180);
         createBut(butTwo, 150, 180);
         createBut(butThree, 260, 180);
@@ -168,6 +220,8 @@ public class Face {
         });
         butResult.setBounds(150, 360, 210, 50);
         butResult.setFont(new Font("�������", Font.PLAIN, 30));
+        butResult.setBackground(new Color(62, 62, 62));
+        butResult.setForeground(new Color(196, 196, 198));
         frame.add(butResult);
         butOne.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -229,6 +283,16 @@ public class Face {
             public void actionPerformed(ActionEvent e) {
                 text.setText(text.getText() + "0");
                 priklad.setText(priklad.getText() + "0");
+            }
+        });
+        butDelete.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if(text.getText().length() != 0){
+                    text.setText(text.getText().substring(0,text.getText().length()-1 ));
+                    String temp = priklad.getText();
+                    temp = temp.substring(0, temp.length()-1);
+                    priklad.setText(temp);
+                }
             }
         });
         butROneMinus.addActionListener(new ActionListener() {
@@ -306,6 +370,10 @@ public class Face {
     void createBut(JButton but, int x, int y){
         but.setBounds(x, y, 100, 50);
         but.setFont(new Font("�������", Font.PLAIN, 50));
+        but.setBackground(new Color(62, 62, 62));
+        but.setForeground(new Color(196, 196, 198));
+        but.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+        but.setBorder(BorderFactory.createEmptyBorder());
         frame.add(but);
     }
     void ex(){
